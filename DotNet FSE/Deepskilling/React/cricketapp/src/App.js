@@ -1,56 +1,75 @@
 import './App.css';
-import ListofPlayers from './ListofPlayers';
-import IndianTeam, {
-  OddPlayers,
-  EvenPlayers,
-  IndianPlayers,
-  ListofIndianPlayers
-} from './IndianPlayers';
+import office from './Images/office.jpg';
 
 function App() {
 
-  // Change this to false to see the second output
-  const flag = true;
+  const officeSpaces = [
 
-  if (flag) {
+    {
+      Name: "DBS",
+      Rent: 50000,
+      Address: "Chennai"
+    },
 
-    return (
-      <div>
+    {
+      Name: "Regus",
+      Rent: 75000,
+      Address: "Bangalore"
+    },
 
-        <h1>List of Players</h1>
+    {
+      Name: "WeWork",
+      Rent: 65000,
+      Address: "Hyderabad"
+    },
 
-        <ListofPlayers />
+    {
+      Name: "SmartWorks",
+      Rent: 55000,
+      Address: "Pune"
+    }
 
-      </div>
-    );
+  ];
 
-  } else {
+  return (
 
-    return (
+    <div style={{ padding: "20px" }}>
 
-      <div>
+      <h1>Office Space, at Affordable Range</h1>
 
-        <h1>Indian Team</h1>
+      {officeSpaces.map((officeItem, index) => (
 
-        <h2>Odd Players</h2>
-        <OddPlayers>{IndianTeam}</OddPlayers>
+        <div key={index} style={{ marginBottom: "30px" }}>
 
-        <hr />
+          <img
+            src={office}
+            alt="Office Space"
+            width="250"
+            height="200"
+          />
 
-        <h2>Even Players</h2>
-        <EvenPlayers>{IndianTeam}</EvenPlayers>
+          <h2>Name: {officeItem.Name}</h2>
 
-        <hr />
+          <h3
+            style={{
+              color:
+                officeItem.Rent <= 60000
+                  ? "red"
+                  : "green"
+            }}
+          >
+            Rent Rs. {officeItem.Rent}
+          </h3>
 
-        <h2>List of Indian Players Merged</h2>
+          <h3>Address: {officeItem.Address}</h3>
 
-        <ListofIndianPlayers IndianPlayers={IndianPlayers} />
+        </div>
 
-      </div>
+      ))}
 
-    );
+    </div>
 
-  }
+  );
 
 }
 
